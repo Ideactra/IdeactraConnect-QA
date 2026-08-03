@@ -1,0 +1,60 @@
+[   63872ms] [LOG] BASE_URL = https://ideactraconnect-backend-anbygpgdaddecac9.southindia-01.azurewebsites.net @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:47
+[   64248ms] [ERROR] Failed to load resource: the server responded with a status of 401 (Unauthorized) @ https://ideactraconnect-backend-anbygpgdaddecac9.southindia-01.azurewebsites.net/auth/me:0
+[   64249ms] [ERROR] api.js: GLOBAL 401 UNAUTHORIZED ERROR detected on endpoint: /auth/me @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:47
+[   64249ms] [ERROR] api.js: Response headers: Vt @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:47
+[   64249ms] [ERROR] api.js: Response data: {detail: Not authenticated} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:47
+[   64250ms] [WARNING] Backend offline or unauthenticated, returning local cached settings AxiosError: Request failed with status code 401
+    at nk (https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:42:10786)
+    at XMLHttpRequest.p (https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:42:17299) @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:47
+[   69620ms] [LOG] LoginPage: User is already authenticated. Redirecting to home... @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:607
+[   69623ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[   69934ms] [LOG] Ads received in Feed: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   69934ms] [LOG] Ads count: 0 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   69962ms] [LOG] Ads received in Feed: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   69962ms] [LOG] Ads count: 0 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   71863ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[   72032ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[   72488ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /hire-with-ai} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[   72488ms] [LOG] HireWithAI mounted, step = 1 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:649
+[   72490ms] [LOG] HireWithAI mounted, step = 1 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:649
+[   72925ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ideactraconnect-backend-anbygpgdaddecac9.southindia-01.azurewebsites.net/ads/for-me:0
+[   72926ms] [ERROR] Failed to load advertisements AxiosError: Request failed with status code 500
+    at nk (https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:42:10786)
+    at XMLHttpRequest.p (https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:42:17299) @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   73898ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /hire-with-ai} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[   73899ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[   74205ms] [LOG] Ads received in Feed: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   74206ms] [LOG] Ads count: 0 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   74207ms] [LOG] Ads received in Feed: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   74207ms] [LOG] Ads count: 0 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   75523ms] [ERROR] Failed to load resource: the server responded with a status of 500 (Internal Server Error) @ https://ideactraconnect-backend-anbygpgdaddecac9.southindia-01.azurewebsites.net/ads/for-me:0
+[   75528ms] [ERROR] Failed to load advertisements AxiosError: Request failed with status code 500
+    at nk (https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:42:10786)
+    at XMLHttpRequest.p (https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:42:17299) @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   81399ms] [LOG] Feed: Loaded posts: [Object, Object, Object, Object, Object, Object, Object] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   81400ms] [LOG] Feed: Ads available: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   88557ms] [LOG] Feed: Loaded posts: [Object, Object, Object, Object, Object, Object, Object] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   88558ms] [LOG] Feed: Ads available: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   88558ms] [LOG] Ads received in Feed: [] @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[   88558ms] [LOG] Ads count: 0 @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:531
+[  522067ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[  523071ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[  528271ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1048063ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1049066ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1051458ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1238770ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1239772ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1244985ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1329904ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1330905ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 1333286ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 2883392ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 2884395ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 2891566ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 3006803ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 3007805ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 3010235ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 3530802ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 3531804ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
+[ 3538995ms] [LOG] ProtectedRoute {loading: false, authenticated: true, user: Object, pathname: /} @ https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/assets/index-C8TqCvzp.js:58
