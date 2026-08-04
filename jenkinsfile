@@ -28,19 +28,37 @@ pipeline {
 
         stage('Install Dependencies') {
             steps {
-                sh 'npm ci'
+                script {
+                    if (isUnix()) {
+                        sh 'npm ci'
+                    } else {
+                        bat 'npm ci'
+                    }
+                }
             }
         }
 
         stage('Install Playwright Browsers') {
             steps {
-                sh 'npx playwright install'
+                script {
+                    if (isUnix()) {
+                        sh 'npx playwright install'
+                    } else {
+                        bat 'npx playwright install'
+                    }
+                }
             }
         }
 
         stage('Run Playwright Tests') {
             steps {
-                sh "npx playwright test tests/${params.TEST_SUITE}.spec.js"
+                script {
+                    if (isUnix()) {
+                        sh "npx playwright test tests/${params.TEST_SUITE}.spec.js"
+                    } else {
+                        bat "npx playwright test tests/${params.TEST_SUITE}.spec.js"
+                    }
+                }
             }
         }
 
