@@ -1,9 +1,8 @@
 pipeline {
     agent any
 
-    tools {
-        nodejs 'NodeJS'
-    }
+    // Remove the NodeJS tool requirement so Jenkins uses Node.js available on the agent PATH.
+    // If you prefer the NodeJS plugin, configure a global tool named exactly "NodeJS".
 
     parameters {
         choice(
