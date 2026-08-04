@@ -5,9 +5,18 @@ pipeline {
         nodejs 'NodeJS'
     }
 
+    parameters {
+        choice(
+            name: 'TEST_SUITE',
+            choices: ['login', 'hire'],
+            description: 'Select the Playwright test suite'
+        )
+    }
+
     environment {
         EMAIL = credentials('IDEACTRA_EMAIL')
         PASSWORD = credentials('IDEACTRA_PASSWORD')
+        CI = "true"
     }
 
     stages {
@@ -24,19 +33,19 @@ pipeline {
             }
         }
 
-        stage('Install Browsers') {
+        stage('Install Playwright Browsers') {
             steps {
                 sh 'npx playwright install'
             }
         }
 
-        stage('Run Login Test') {
+        stage('Run Playwright Tests') {
             steps {
-                sh 'npx playwright test tests/login.spec.js'
+                sh "npx playwright test tests/${params.TEST_SUITE}.spec.js"
             }
         }
 
-        stage('Archive Report') {
+        stage('Publish HTML Report') {
             steps {
                 archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
             }
@@ -45,7 +54,17 @@ pipeline {
 
     post {
         always {
-            junit allowEmptyResults: true, testResults: 'test-results/**/*.xml'
+            junit testResults: 'test-results/results.xml', allowEmptyResults: true
+            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+            archiveArtifacts artifacts: 'test-results/**', fingerprint: true
+        }
+
+        success {
+            echo 'Playwright tests executed successfully.'
+        }
+
+        failure {
+            echo 'Playwright tests failed.'
         }
     }
 }
