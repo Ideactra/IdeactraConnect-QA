@@ -11,8 +11,11 @@ test('user can post a job from the hire flow', async ({ page }) => {
   await loginPage.verifyHomePageVisible();
 
   await hirePage.openHireFlow();
-  await hirePage.selectJobTitle('Software Engineer');
-  await hirePage.clickContinue();
+  await hirePage.selectRandomJobTitle();
+  await hirePage.clickSearchContinue();
+  await hirePage.waitForPageLoad();
+  await hirePage.clickDescriptionContinue();
+
   await hirePage.fillExperienceSection();
   await hirePage.publishJob();
   await hirePage.verifyPublishedSuccess();

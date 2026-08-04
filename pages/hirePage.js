@@ -1,107 +1,95 @@
 import { expect } from '@playwright/test';
 
 export class HirePage {
+  /**
+   * @param {import('@playwright/test').Page} page
+   */
   constructor(page) {
     this.page = page;
-    this.hireButton = page.locator("xpath=//button[5]//div[1]//*[name()='svg']//*[name()='path' and contains(@d,'M11.017 2.')]");
-    this.jobTitleInput = page.locator('xpath=//input[@id="ws-role-input"]');
-    this.continueButton = page.locator('xpath=//button[text()="Continue"]');
+    this.hireButton = page.locator("xpath=//button[5]//div[1]//*[name()='svg']//*[name()='path' and contains(@d,'M11.017 2.')]/ancestor::button[1]");
+    this.jobTitleInput = page.locator("xpath=//input[@id='ws-role-input']");
+    this.searchContinueButton = page.locator("xpath=//button[@class='ws-btn-primary']");
+    this.descriptionContinueButton = page.locator("xpath=//button[@class='jdesc-btn-primary']");
+    this.editIcons = page.locator("xpath=//button[@class='rs-edit-icon']");
     this.publishButton = page.locator("xpath=//button[@class='prev-btn-primary']");
     this.successTitle = page.locator("xpath=//h2[@class='prev-success-title']");
-    this.editIcons = page.locator("xpath=//button[@class='rs-edit-icon']");
+    this.dropdownOptions = page.locator("xpath=//ul//li | //div[contains(@role,'option')] | //div[contains(@class,'dropdown')]//div");
   }
 
   async openHireFlow() {
-    const fallbackButton = this.page.getByRole('button', { name: /hire with ai/i }).last();
-
-    if (await this.hireButton.count()) {
-      await this.hireButton.first().click().catch(() => fallbackButton.click());
-    } else {
-      await fallbackButton.click();
-    }
-
-    await this.page.waitForLoadState('domcontentloaded').catch(() => {});
-    await this.page.waitForURL(/hire-with-ai/i, { timeout: 30000 }).catch(() => {});
+    await this.hireButton.waitFor({ state: 'visible', timeout: 15000 });
+    await this.hireButton.click();
+    await this.page.waitForURL(/hire-with-ai|hire/i, { timeout: 30000 });
   }
 
-  async selectJobTitle(jobTitle = 'Software Engineer') {
-    const requestedInput = this.page.locator('xpath=//input[@id="ws-role-input"]');
-    const fallbackInput = this.page.locator('input[placeholder="Search job titles"], input[aria-label*="job title" i], input[type="text"]').first();
+  async selectRandomJobTitle() {
+    const jobTitles = ['Software Engineer', 'Frontend Engineer', 'Backend Engineer', 'QA Engineer', 'Product Manager'];
+    const selectedTitle = jobTitles[Math.floor(Math.random() * jobTitles.length)];
 
-    const input = (await requestedInput.count()) > 0 ? requestedInput : fallbackInput;
-    await input.waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
-    if (await input.count()) {
-      await input.fill(jobTitle).catch(() => {});
-    }
+    await this.jobTitleInput.waitFor({ state: 'visible', timeout: 15000 });
+    await this.jobTitleInput.click();
+    await this.jobTitleInput.fill(selectedTitle);
 
-    const requestedOptions = this.page.locator('xpath=//li|//div[contains(@class, "option") or contains(@class, "dropdown")]');
-    const visibleOptions = this.page.locator('li, [role="option"], button, div').filter({ hasText: /software|engineer/i });
+    await this.page.waitForTimeout(500);
+    await this.dropdownOptions.first().waitFor({ state: 'visible', timeout: 10000 });
 
-    const options = (await requestedOptions.count()) > 0 ? requestedOptions : visibleOptions;
-    const count = await options.count().catch(() => 0);
-
-    for (let i = 0; i < count; i++) {
-      let optionText = '';
-      try {
-        optionText = await options.nth(i).textContent();
-      } catch {
-        optionText = '';
-      }
-
-      if (/software|engineer/i.test(optionText)) {
-        await options.nth(i).click().catch(() => {});
-        break;
+    const optionCount = await this.dropdownOptions.count();
+    for (let i = 0; i < optionCount; i++) {
+      const option = this.dropdownOptions.nth(i);
+      const text = (await option.textContent())?.trim() || '';
+      if (/software engineer|software|engineer/i.test(text)) {
+        await option.click();
+        return selectedTitle;
       }
     }
 
-    await this.page.keyboard.press('Enter').catch(() => {});
-  }
-
-  async clickContinue() {
-    const continueButtons = this.page.locator('button').filter({ hasText: /continue/i });
-    const count = await continueButtons.count().catch(() => 0);
-
-    if (count > 0) {
-      await continueButtons.first().click({ timeout: 15000 }).catch(() => {});
-      await this.page.waitForLoadState('domcontentloaded').catch(() => {});
+    if (optionCount > 0) {
+      await this.dropdownOptions.first().click();
     }
 
-    await this.page.waitForTimeout(2000).catch(() => {});
+    return selectedTitle;
+  }
+
+  async clickSearchContinue() {
+    await this.searchContinueButton.first().waitFor({ state: 'visible', timeout: 15000 });
+    await this.searchContinueButton.first().click();
+  }
+
+  async clickDescriptionContinue() {
+    await this.descriptionContinueButton.first().waitFor({ state: 'visible', timeout: 15000 });
+    await this.descriptionContinueButton.first().click();
+  }
+
+  async waitForPageLoad() {
+    await this.page.waitForLoadState('networkidle');
+    await this.page.waitForTimeout(1500);
   }
 
   async fillExperienceSection() {
-    const editIcons = this.editIcons;
-    const count = await editIcons.count().catch(() => 0);
+    await this.editIcons.first().waitFor({ state: 'visible', timeout: 15000 });
 
-    if (count > 0) {
-      await editIcons.nth(0).click().catch(() => {});
-      await this.page.locator('input').first().fill('2').catch(() => {});
-    }
+    await this.editIcons.nth(0).click();
+    await this.page.locator("xpath=(//input)[1]").fill('2');
 
-    if (count > 1) {
-      await editIcons.nth(1).click().catch(() => {});
-      await this.page.getByText(/full time/i).first().click().catch(() => {});
-      await this.page.getByText(/full-time|full time/i).first().click().catch(() => {});
-    }
+    await this.editIcons.nth(1).click();
+    const fullTimeOption = this.page.locator("xpath=//div[contains(text(),'Full Time') or contains(text(),'full time') or contains(text(),'full-time')]");
+    await fullTimeOption.first().waitFor({ state: 'visible', timeout: 10000 });
+    await fullTimeOption.first().click();
 
-    if (count > 2) {
-      await editIcons.nth(2).click().catch(() => {});
-      await this.page.locator('input').last().fill('chennai').catch(() => {});
-    }
+    await this.editIcons.nth(2).click();
+    await this.page.locator("xpath=(//input)[last()]").fill('chennai');
 
-    if (count > 3) {
-      await editIcons.nth(3).click().catch(() => {});
-      await this.page.locator('input').last().fill('18L').catch(() => {});
-    }
+    await this.editIcons.nth(3).click();
+    await this.page.locator("xpath=(//input)[last()]").fill('18L');
   }
 
   async publishJob() {
-    const publishButton = this.page.locator('button').filter({ hasText: /publish/i }).first();
-    await publishButton.waitFor({ state: 'visible', timeout: 15000 }).catch(() => {});
-    await publishButton.click().catch(() => {});
+    await this.publishButton.waitFor({ state: 'visible', timeout: 15000 });
+    await this.publishButton.click();
   }
 
   async verifyPublishedSuccess() {
-    await expect(this.page.locator('body')).toContainText(/job published (succes|success)fully|published successfully/i, { timeout: 20000 }).catch(() => {});
+    await this.successTitle.waitFor({ state: 'visible', timeout: 15000 });
+    await expect(this.successTitle).toHaveText(/job published successfully/i);
   }
 }
