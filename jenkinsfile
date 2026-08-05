@@ -1,8 +1,9 @@
 pipeline {
     agent any
 
-    // Remove the NodeJS tool requirement so Jenkins uses Node.js available on the agent PATH.
-    // If you prefer the NodeJS plugin, configure a global tool named exactly "NodeJS".
+    tools {
+        nodejs 'NodeJS'
+    }
 
     parameters {
         choice(
@@ -42,9 +43,9 @@ pipeline {
             steps {
                 script {
                     if (isUnix()) {
-                        sh 'npx playwright install'
+                        sh 'npx playwright install --with-deps'
                     } else {
-                        bat 'npx playwright install'
+                        bat 'npx playwright install chromium'
                     }
                 }
             }
