@@ -20,6 +20,8 @@ export class LoginPage {
   }
 
   async verifyHomePageVisible() {
-    await expect(this.page.locator("//button[normalize-space()='Create Post']")).toBeVisible({ timeout: 30000 });
-  }
+    await expect(
+        this.page.locator("//button[normalize-space()='Create Post']")
+    ).toBeVisible({ timeout: 30000 });
+}
 }

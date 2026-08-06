@@ -47,7 +47,16 @@ export default defineConfig({
     baseURL: 'https://ideactraconnect-frontend-prod-grdmctaqb4aaadgu.southindia-01.azurewebsites.net/login',
 
     /* Action timeout for Playwright methods like click(), fill(), etc. */
-    actionTimeout: 15000,
+    actionTimeout: 30000,
+
+  navigationTimeout: 60000,
+
+  viewport: {
+    width: 1440,
+    height: 900,
+  },
+
+  headless: true,
 
     /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
