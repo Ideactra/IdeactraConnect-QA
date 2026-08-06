@@ -17,13 +17,11 @@ export class LoginPage {
     await this.emailInput.fill(email);
     await this.passwordInput.fill(password);
     await this.submitButton.click();
+    await this.page.waitForLoadState('networkidle', { timeout: 45000 });
   }
 
   async verifyHomePageVisible() {
-    const createPostLocator = this.page.getByRole('button', { name: /^Create Post$/i })
-      .or(this.page.locator("xpath=//button[normalize-space()='Create Post']"))
-      .or(this.page.getByText(/^Create Post$/i, { exact: true }));
-
+    const createPostLocator = this.page.locator('button:has-text("Create Post")');
     await expect(createPostLocator).toBeVisible({ timeout: 45000 });
   }
 }
