@@ -1,6 +1,7 @@
 pipeline {
     agent any
 
+    // Remove this block if the NodeJS plugin is NOT installed/configured
     tools {
         nodejs 'NodeJS'
     }
@@ -9,7 +10,7 @@ pipeline {
         choice(
             name: 'TEST_SUITE',
             choices: ['login', 'hire'],
-            description: 'Select the Playwright test suite'
+            description: 'Select the Playwright test suite to run'
         )
     }
 
@@ -24,6 +25,20 @@ pipeline {
         stage('Checkout') {
             steps {
                 checkout scm
+            }
+        }
+
+        stage('Check Node & NPM Version') {
+            steps {
+                script {
+                    if (isUnix()) {
+                        sh 'node -v'
+                        sh 'npm -v'
+                    } else {
+                        bat 'node -v'
+                        bat 'npm -v'
+                    }
+                }
             }
         }
 
@@ -63,26 +78,31 @@ pipeline {
             }
         }
 
-        stage('Publish HTML Report') {
+        stage('Archive Reports') {
             steps {
                 archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
+                archiveArtifacts artifacts: 'test-results/**', fingerprint: true
             }
         }
     }
 
     post {
         always {
-            junit testResults: 'test-results/results.xml', allowEmptyResults: true
-            archiveArtifacts artifacts: 'playwright-report/**', fingerprint: true
-            archiveArtifacts artifacts: 'test-results/**', fingerprint: true
+            junit allowEmptyResults: true, testResults: 'test-results/results.xml'
+
+            archiveArtifacts allowEmptyArchive: true,
+                artifacts: 'playwright-report/**'
+
+            archiveArtifacts allowEmptyArchive: true,
+                artifacts: 'test-results/**'
         }
 
         success {
-            echo 'Playwright tests executed successfully.'
+            echo ' Playwright tests completed successfully.'
         }
 
         failure {
-            echo 'Playwright tests failed.'
+            echo ' Playwright tests failed.'
         }
     }
 }
