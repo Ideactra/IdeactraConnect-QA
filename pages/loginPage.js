@@ -20,13 +20,5 @@ export class LoginPage {
     await this.page.waitForLoadState('networkidle', { timeout: 45000 });
   }
 
-  async verifyHomePageVisible() {
-  // Option A: Recommended Playwright role locator (case-insensitive regex)
-  const createPostLocator = this.page.getByRole('button', { name: /create post/i });
-
-  // Option B: Fallback locator if the element is an <a> or <div> styling as a button
-  // const createPostLocator = this.page.locator('text=/create post/i');
-
-  await expect(createPostLocator).toBeVisible({ timeout: 45000 });
-}
+  
 }
