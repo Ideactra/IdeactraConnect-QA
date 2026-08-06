@@ -44,7 +44,7 @@ export default defineConfig({
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
     /* Base URL to use in actions like `await page.goto('')`. */
-    baseURL: 'https://ideactraconnect-frontend-dhbcdbeda5hnbhfw.southindia-01.azurewebsites.net/',
+    baseURL: 'https://ideactraconnect-frontend-prod-grdmctaqb4aaadgu.southindia-01.azurewebsites.net/login',
 
     /* Action timeout for Playwright methods like click(), fill(), etc. */
     actionTimeout: 15000,
