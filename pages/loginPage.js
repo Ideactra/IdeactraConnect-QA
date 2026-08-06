@@ -21,7 +21,12 @@ export class LoginPage {
   }
 
   async verifyHomePageVisible() {
-    const createPostLocator = this.page.locator('button:has-text("Create Post")');
-    await expect(createPostLocator).toBeVisible({ timeout: 45000 });
-  }
+  // Option A: Recommended Playwright role locator (case-insensitive regex)
+  const createPostLocator = this.page.getByRole('button', { name: /create post/i });
+
+  // Option B: Fallback locator if the element is an <a> or <div> styling as a button
+  // const createPostLocator = this.page.locator('text=/create post/i');
+
+  await expect(createPostLocator).toBeVisible({ timeout: 45000 });
+}
 }
