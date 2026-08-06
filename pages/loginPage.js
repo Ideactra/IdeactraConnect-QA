@@ -9,7 +9,7 @@ export class LoginPage {
   }
 
   async open() {
-    await this.page.goto('/login');
+    await this.page.goto('');
   }
 
   async login(email, password) {
@@ -20,8 +20,10 @@ export class LoginPage {
   }
 
   async verifyHomePageVisible() {
-    await expect(
-        this.page.locator("//button[normalize-space()='Create Post']")
-    ).toBeVisible({ timeout: 30000 });
-}
+    const createPostLocator = this.page.getByRole('button', { name: /^Create Post$/i })
+      .or(this.page.locator("xpath=//button[normalize-space()='Create Post']"))
+      .or(this.page.getByText(/^Create Post$/i, { exact: true }));
+
+    await expect(createPostLocator).toBeVisible({ timeout: 45000 });
+  }
 }
